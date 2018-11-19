@@ -12,4 +12,8 @@ export class AdminLoginComponent implements OnInit {
   ngOnInit() {
   }
 
+  logIn() {
+    console.log("welcome");
+  }
+
 }

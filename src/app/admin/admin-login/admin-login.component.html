@@ -2,12 +2,16 @@
 </div>
   <div class="example-container">
     <mat-form-field>
-      <input matInput placeholder="Username">
+      <input matInput placeholder="Username" type="text" #userName>
     </mat-form-field>
   
     <mat-form-field>
-      <input matInput placeholder="Password">
+      <input matInput placeholder="Password" type="text" #password>
     </mat-form-field>
+    <div>
+        <button mat-flat-button color="primary" (click)="logIn()">Primary</button>
+    </div>
   </div>
+
 
 
