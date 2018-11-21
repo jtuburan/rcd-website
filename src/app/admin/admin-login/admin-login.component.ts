@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-admin-login',
@@ -12,8 +13,8 @@ export class AdminLoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  logIn() {
-    console.log("welcome");
+  onLogin(form: NgForm) {
+    console.log(form.value);
   }
 
 }
