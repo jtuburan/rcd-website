@@ -11,6 +11,9 @@ var jwt    = require('jsonwebtoken'); // used to create, sign, and verify tokens
 var config = require('./config'); // get our config file
 var User   = require('./models/user'); // get our mongoose model
 
+// import routes
+const userRoutes = require('./routes/user');
+
 // =======================
 // configuration =========
 // =======================
@@ -35,10 +38,7 @@ app.get('/', function(req, res) {
 
 // API ROUTES -------------------
 // get instance for api routes
-var appRoutes = express.Router(); 
-
-
-
+app.use('/api',userRoutes);
 
 
 
