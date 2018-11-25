@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { AdminLoginComponent } from './admin/admin-login/admin-login.component';
 import { AdminRegistrationComponent } from './admin/admin-registration/admin-registration.component';
+import { AuthService } from './admin/auth.service';
 
 
 
@@ -28,7 +29,7 @@ import { AdminRegistrationComponent } from './admin/admin-registration/admin-reg
     FormsModule,
     MatInputModule
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

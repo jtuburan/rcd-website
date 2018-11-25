@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-admin-registration',
@@ -8,11 +9,15 @@ import { NgForm } from '@angular/forms';
 })
 export class AdminRegistrationComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _auth: AuthService) { }
 
   ngOnInit() {
   }
   onLogin(form: NgForm) {
+    this._auth.registerUser().subscribe(
+      res => console.log(res),
+      err => console.log(err)
+    )
     console.log(form.value);
   }
 }
