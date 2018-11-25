@@ -5,7 +5,7 @@ const User = require('../models/user');
 
 router.post('/login',(req, res, next) => {
    let userData = req.body;
-   User.findOne({ name: userData.name  }, (error, user) => {
+   User.findOne({ username: userData.username  }, (error, user) => {
        if(error) {
             console.log(error);
        } else {
