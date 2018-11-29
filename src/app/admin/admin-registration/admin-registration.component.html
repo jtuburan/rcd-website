@@ -1,17 +1,19 @@
 <div class="login-background">
 </div>
-  <form class="example-container" (submit)="onLogin(loginForm)" #loginForm="ngForm">
+  <form class="example-container" #loginForm="ngForm">
     <mat-form-field>
-        <input matInput name="username" ngModel placeholder="Username" type="text" #usernameInput="ngModel" required username>
+        <input matInput name="username" [(ngModel)]="registerUserData.username" ngModel placeholder="Username" type="text" #usernameInput="ngModel" required username>
         <mat-error *ngIf="usernameInput.invalid">Please Enter a valid Username</mat-error>
     </mat-form-field>
     <br/>
     <mat-form-field>
-        <input matInput name="password" ngModel placeholder="Password" type="password" #passwordInput="ngModel" required password>
+        <input matInput name="password" [(ngModel)]="registerUserData.password"  ngModel placeholder="Password" type="password" #passwordInput="ngModel" required password>
         <mat-error *ngIf="usernameInput.invalid">Please Enter a valid Password</mat-error>
       </mat-form-field>
     <div>
-        <button mat-flat-button color="primary" type="submit">register</button>
+        <button mat-flat-button color="primary" type="button" (click)="onLogin()" >register</button>
+    </div>
+    <div>
     </div>
   </form>
 

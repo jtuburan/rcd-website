@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
 import { AuthService } from '../auth.service';
 
 @Component({
@@ -9,15 +8,17 @@ import { AuthService } from '../auth.service';
 })
 export class AdminRegistrationComponent implements OnInit {
 
-  constructor(private _auth: AuthService) { }
+  registerUserData = {};
+  constructor(private auth: AuthService) { }
 
   ngOnInit() {
   }
-  onLogin(form: NgForm) {
-    this._auth.registerUser().subscribe(
+  onLogin() {
+    this.auth.registerUser(this.registerUserData)
+    .subscribe(
       res => console.log(res),
       err => console.log(err)
-    )
-    console.log(form.value);
+    );
+    console.log(this.registerUserData);
   }
 }
