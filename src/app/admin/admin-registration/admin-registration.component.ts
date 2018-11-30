@@ -13,7 +13,7 @@ export class AdminRegistrationComponent implements OnInit {
 
   ngOnInit() {
   }
-  onLogin() {
+  onRegister() {
     this.auth.registerUser(this.registerUserData)
     .subscribe(
       res => console.log(res),
