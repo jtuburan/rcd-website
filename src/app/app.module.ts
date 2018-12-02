@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { MaterialModule } from './material';
 import {MatInputModule} from '@angular/material';
-import { HttpClientModule }   from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS }   from '@angular/common/http';
 import { AppRoutingModule } from './app.routing.module'
 import { FormsModule } from '@angular/forms';
 import {MatSidenavModule} from '@angular/material/sidenav';
@@ -13,9 +13,11 @@ import { AdminLoginComponent } from './admin/admin-login/admin-login.component';
 import { AdminRegistrationComponent } from './admin/admin-registration/admin-registration.component';
 import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component'
 import { AdminHeaderComponent } from './admin/admin-header/admin-header.component';
+import { PostListComponent } from './admin/post-list/post-list.component';
 import { AuthService } from './admin/auth.service';
-import { EventsService } from './events.service';
+import { EventsService } from './admin/events.service';
 import { AuthGuard } from './admin/auth.guard';
+import { TokenInterceptorService } from './admin/token-interceptor.service';
 
 
 
@@ -25,7 +27,8 @@ import { AuthGuard } from './admin/auth.guard';
     AdminLoginComponent,
     AdminRegistrationComponent,
     AdminDashboardComponent,
-    AdminHeaderComponent
+    AdminHeaderComponent,
+    PostListComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +40,12 @@ import { AuthGuard } from './admin/auth.guard';
     MatInputModule,
     MatSidenavModule
   ],
-  providers: [AuthService, AuthGuard, EventsService],
+  providers: [AuthService, AuthGuard, EventsService,
+  {
+    provide : HTTP_INTERCEPTORS,
+    useClass: TokenInterceptorService,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
