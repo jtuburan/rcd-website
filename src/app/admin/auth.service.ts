@@ -19,4 +19,9 @@ export class AuthService {
     return this.http.post<any>(this._loginUrl, user);
   }
 
+  loggedIn() {
+    // !! double negate checking if its true or false
+    return !!localStorage.getItem('token');
+  }
+
 }

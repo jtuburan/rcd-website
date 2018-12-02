@@ -15,6 +15,7 @@ import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard
 import { AdminHeaderComponent } from './admin/admin-header/admin-header.component';
 import { AuthService } from './admin/auth.service';
 import { EventsService } from './events.service';
+import { AuthGuard } from './admin/auth.guard';
 
 
 
@@ -36,7 +37,7 @@ import { EventsService } from './events.service';
     MatInputModule,
     MatSidenavModule
   ],
-  providers: [AuthService, EventsService],
+  providers: [AuthService, AuthGuard, EventsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
