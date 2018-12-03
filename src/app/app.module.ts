@@ -15,7 +15,7 @@ import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard
 import { AdminHeaderComponent } from './admin/admin-header/admin-header.component';
 import { PostListComponent } from './admin/post-list/post-list.component';
 import { AuthService } from './admin/auth.service';
-import { EventsService } from './admin/events.service';
+import { EventsService } from './admin/post-list/events.service';
 import { AuthGuard } from './admin/auth.guard';
 import { TokenInterceptorService } from './admin/token-interceptor.service';
 

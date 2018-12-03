@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { EventsService } from './events.service';
 
 @Component({
   selector: 'app-post-list',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PostListComponent implements OnInit {
 
-  constructor() { }
+  list = [];
+  constructor(private _eventsService: EventsService ) { }
 
   ngOnInit() {
+    this._eventsService.getPostList().subscribe(
+      res => this.list = res,
+      err => console.log(err)
+    );
   }
 
 }
