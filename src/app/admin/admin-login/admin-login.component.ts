@@ -13,6 +13,11 @@ export class AdminLoginComponent implements OnInit {
   constructor(private _auth: AuthService, private _router: Router) { }
 
   ngOnInit() {
+    const token = localStorage.getItem('token');
+    if(token) {
+      this._router.navigate(['/admin-dashboard']);
+    }
+    
   }
 
   onLogin() {

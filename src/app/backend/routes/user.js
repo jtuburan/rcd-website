@@ -48,8 +48,24 @@ router.post('/register',(req, res, next) => {
                 });
         });
  });
+// middleware to verify the token
+ function verifyToken(req, res, next) {
+    if(!req.headers.authorization ) {
+        return res.status(401).send('unauthorized request');
+    }
+    let token = req.headers.authorization.split(' ')[1];
+    if(token === 'null') {
+        return res.status(401).send('unauthorized request');
+    }
+    let payload = jwt.verify(token, 'secret')
+    if(!payload) {
+        return res.status(401).send('unauthorized request');
+    }
+    req.userId = payload.subject;
+    nect();
+ }
 
- router.get('/postListEvent', (req,res) => {
+ router.get('/postListEvent', verifyToken, (req,res) => {
     let events = [
       {
         "_id": "1",
